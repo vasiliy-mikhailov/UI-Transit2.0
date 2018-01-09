@@ -5,7 +5,7 @@ const app = express();
 // in the dist directory
 app.use(express.static(__dirname + '/dist'));
 app.use(function(req, res, next) {
-  res.sendFile("index.html");
+  res.sendFile(__dirname + "/dist/index.html");
 })
 // Start the app by listening on the default
 // Heroku port
