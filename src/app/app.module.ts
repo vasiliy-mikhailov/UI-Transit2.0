@@ -14,6 +14,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Iso20022ViewComponent } from './iso20022-view/iso20022-view.component';
+import { FreeFormatViewComponent } from './free-format-view/free-format-view.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     Iso20022ListComponent,
     FreeFormatListComponent,
     LogoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    Iso20022ViewComponent,
+    FreeFormatViewComponent
   ],
   imports: [
     BrowserModule,

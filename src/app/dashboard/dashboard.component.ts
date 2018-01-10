@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../auth.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
   server_state: any;
+  exchange_active: boolean;
 
 
   constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient) {
@@ -28,6 +28,21 @@ export class DashboardComponent implements OnInit {
           this.server_state = server_state;
         }
       );
+
+    this.httpClient.get<boolean>('https://transit2-0.firebaseio.com/exchange_active.json?auth=' + token)
+      .subscribe(
+        (exchange_active) => {
+          this.exchange_active = exchange_active;
+        }
+      );
+  }
+
+  setExchangeState(exchange_active: boolean) {
+    const token = this.authService.getToken();
+
+    this.httpClient.put('https://transit2-0.firebaseio.com/exchange_active.json?auth=' + token, exchange_active).subscribe();
+
+    this.exchange_active = exchange_active;
   }
 
 

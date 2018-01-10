@@ -1,6 +1,6 @@
 <div class="row">
-  <button type="button" class="btn btn-success" [disabled]="server_state?.exchange_active">Запустить обмен</button>
-  <button type="button" class="btn btn-danger" [disabled]="!server_state?.exchange_active">Остановить обмен</button>
+  <button type="button" class="btn btn-success" [disabled]="exchange_active" (click)="setExchangeState(true)">Запустить обмен</button>
+  <button type="button" class="btn btn-danger" [disabled]="!exchange_active" (click)="setExchangeState(false)">Остановить обмен</button>
 </div>
 <div class="row">
   Ошибок за последние 20 минут {{ server_state?.errors_last }}

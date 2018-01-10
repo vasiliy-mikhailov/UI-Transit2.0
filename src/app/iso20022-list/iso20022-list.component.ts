@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -24,7 +24,7 @@ export class Iso20022ListComponent implements OnInit {
     { prop: 'recipient_destination', name: 'ТКД' }
   ];
 
-  constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient) {
+  constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient, private route: ActivatedRoute) {
     if (!this.authService.isAuthenticated()) {
       router.navigate(['login']);
 
@@ -42,7 +42,9 @@ export class Iso20022ListComponent implements OnInit {
   }
 
   onSelect($event) {
-    console.log($event);
+    const id = $event.selected[0].id;
+
+    this.router.navigate([this.route.url, id]);
   }
 
   ngOnInit() {
