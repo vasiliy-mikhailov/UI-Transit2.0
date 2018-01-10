@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-logout',
@@ -9,11 +9,8 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
-    this.angularFireAuth.auth.signOut().then((res) => {
-      this.router.navigate(['']);
-    })
-      .catch((err) => console.log(err));
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.signOut();
   }
 
   ngOnInit() {

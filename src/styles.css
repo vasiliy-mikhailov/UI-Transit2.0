@@ -276,7 +276,7 @@ button.close {
   height:25px;
   margin-left:-5px;
   display:inline-block;
-  /*background:url(../img/socmedia_icons.png) no-repeat;*/
+  background:url(assets/socmedia_icons.png) no-repeat;
   background-position:0;
 }
 .socmedia_icons a.socmedia_icons__2 {

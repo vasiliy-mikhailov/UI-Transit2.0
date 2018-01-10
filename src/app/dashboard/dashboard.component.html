@@ -1,18 +1,17 @@
-<div class="container">
-  <div class="row">
-    <button type="button" class="btn btn-success" [disabled]="(server_state | async)?.exchange_active">Запустить обмен</button>
-    <button type="button" class="btn btn-danger" [disabled]="!(server_state | async)?.exchange_active">Остановить обмен</button>
-  </div>
-  <div class="row">
-    Ошибок за последние 20 минут {{ (server_state | async)?.errors_last }}
-  </div>
-  <div class="row">
-    Свободное место на диске {{ (server_state | async)?.hdd_free_space }}
-  </div>
-  <div class="row">
-    Исходящих сообщений, отправляющихся дольше 2х минут {{ (server_state | async)?.out_files_delay }}
-  </div>
-  <div class="row">
-    Входящих сообщений, обрабатывающихся дольше 2х минут {{ (server_state | async)?.in_files_delay }}
-  </div>
+<div class="row">
+  <button type="button" class="btn btn-success" [disabled]="server_state?.exchange_active">Запустить обмен</button>
+  <button type="button" class="btn btn-danger" [disabled]="!server_state?.exchange_active">Остановить обмен</button>
 </div>
+<div class="row">
+  Ошибок за последние 20 минут {{ server_state?.errors_last }}
+</div>
+<div class="row">
+  Свободное место на диске {{ server_state?.hdd_free_space }}
+</div>
+<div class="row">
+  Исходящих сообщений, отправляющихся дольше 2х минут {{ server_state?.out_files_delay }}
+</div>
+<div class="row">
+  Входящих сообщений, обрабатывающихся дольше 2х минут {{ server_state?.in_files_delay }}
+</div>
+

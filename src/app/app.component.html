@@ -1,33 +1,54 @@
 
 <div class="container-head">
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Menu</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/ru" class="logo navbar-brand"></a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbar-collapse">
-      <div class="addnav">
-        <a class="btn btn-light btn-to-primary" href="/ru/account/products" role="button"><b>mikhailov@nsd.ru</b></a>
-        <a class="btn btn-light" href="/logout" role="button">Выход</a>
-        <a class="btn btn-light btn-to-primary" href="/ru/products/selector" role="button">Подбор продуктов</a>
-        <a class="btn btn-light btn-to-primary" href="/en/products/2" role="button">En</a>
-      </div>        <ul class="nav navbar-nav">
-      <li routerLinkActive="active"><a routerLink="/out-folder" style = 'cursor: pointer'>Папка out</a></li>
-      <li routerLinkActive="active"><a routerLink="/iso20022" style = 'cursor: pointer'>ISO 20022</a></li>
-      <li routerLinkActive="active"><a routerLink="/free-format" style = 'cursor: pointer'>Свободный формат</a></li>
-      <li routerLinkActive="active"><a routerLink="/in-folder" style = 'cursor: pointer'>Папка in</a></li>
-    </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Menu</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a routerLink="" class="logo navbar-brand"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <div class="addnav">
+          <a class="btn btn-light btn-to-primary" routerLink="" role="button" *ngIf="authService.isAuthenticated()"><b>{{ authService.getUserEMail() }}</b></a>
+          <a class="btn btn-light" routerLink="/login" role="button" *ngIf="!authService.isAuthenticated()">Вход</a>
+          <a class="btn btn-light" routerLink="/logout" role="button" *ngIf="authService.isAuthenticated()">Выход</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active"><a routerLink="/out-folder" style = 'cursor: pointer'>Папка out</a></li>
+          <li routerLinkActive="active"><a routerLink="/iso20022" style = 'cursor: pointer'>ISO 20022</a></li>
+          <li routerLinkActive="active"><a routerLink="/free-format" style = 'cursor: pointer'>Свободный формат</a></li>
+          <li routerLinkActive="active"><a routerLink="/in-folder" style = 'cursor: pointer'>Папка in</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 </div>
 
 <div class="container">
 <router-outlet></router-outlet>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="col-xs-6 foot__links">
+    © 1996 – 2018 НКО АО НРД <a href="https://www.nsd.ru">nsd.ru</a><br>
+  </div>
+
+<div class="col-xs-6">
+  <div class="socmedia_icons">
+    <a href="/ru/news/rss" class="socmedia_icons__1"></a>
+    <!--a target="_blank" href="https://www.linkedin.com/company/national-settlement-depository" class="socmedia_icons__2"></a-->
+    <a target="_blank" href="https://www.facebook.com/National.Settlement.Depository" class="socmedia_icons__3"></a>
+    <a target="_blank" href="https://www.youtube.com/user/NSDCSD" class="socmedia_icons__4"></a>
+    <a target="_blank" href="https://twitter.com/NSD_News_ru" class="socmedia_icons__5"></a>
+    <a target="_blank" href="https://www.nsd.ru/ru/" class="socmedia_icons__6"></a>
+  </div>
+</div>
 </div>

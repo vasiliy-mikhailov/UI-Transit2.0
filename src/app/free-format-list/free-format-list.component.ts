@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AuthService } from '../auth.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-free-format-list',
@@ -10,7 +11,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
   styleUrls: ['./free-format-list.component.css']
 })
 export class FreeFormatListComponent implements OnInit {
-  freeFormatMessages: Observable<any>;
+  freeFormatMessages: any[];
 
   columns = [
     { prop: 'id', name: 'id' },
@@ -25,17 +26,21 @@ export class FreeFormatListComponent implements OnInit {
     { prop: 'state', name: 'Статус' }
   ];
 
-  constructor(private angularFireAuth: AngularFireAuth, private angularFireDatabase: AngularFireDatabase, private router: Router) {
-    angularFireAuth.authState.subscribe((auth) => {
-        if (auth) {
-          console.log('User', auth.email);
-        } else {
-          router.navigate(['login']);
-        }
-      }
-    );
+  constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient) {
+    if (!this.authService.isAuthenticated()) {
+      router.navigate(['login']);
 
-    this.freeFormatMessages = angularFireDatabase.list('/free_format_messages').valueChanges();
+      return;
+    }
+
+    const token = this.authService.getToken();
+
+    this.httpClient.get<any[]>('https://transit2-0.firebaseio.com/free_format_messages.json?auth=' + token)
+      .subscribe(
+        (freeFormatMessages: any[]) => {
+          this.freeFormatMessages = freeFormatMessages;
+        }
+      );
   }
 
   ngOnInit() {

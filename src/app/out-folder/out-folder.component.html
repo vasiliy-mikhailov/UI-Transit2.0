@@ -1,16 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <ngx-datatable
-        class="bootstrap ngx-datatable"
-        [columns]="columns"
-        [rows]="outFiles | async"
-        [sorts]="[{prop: 'file_name', dir: 'asc'}]"
-        [loadingIndicator]="true"
-      >
-      </ngx-datatable>
-    </div>
+<div class="row">
+  <div class="col-12">
+    <ngx-datatable
+      class="bootstrap ngx-datatable"
+      [columns]="columns"
+      [rows]="outFiles"
+      [sorts]="[{prop: 'file_name', dir: 'asc'}]"
+      [loadingIndicator]="true"
+    >
+    </ngx-datatable>
   </div>
 </div>
+
 
 
