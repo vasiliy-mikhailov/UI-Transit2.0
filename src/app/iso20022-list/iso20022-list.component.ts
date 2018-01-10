@@ -38,6 +38,10 @@ export class Iso20022ListComponent implements OnInit {
     this.iso20022Messages = angularFireDatabase.list('/iso_20022_messages').valueChanges();
   }
 
+  onSelect($event) {
+    console.log($event);
+  }
+
   ngOnInit() {
   }
 

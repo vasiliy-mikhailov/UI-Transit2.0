@@ -6,9 +6,10 @@ import { InFolderComponent } from './in-folder/in-folder.component';
 import { Iso20022ListComponent } from './iso20022-list/iso20022-list.component';
 import { FreeFormatListComponent } from './free-format-list/free-format-list.component';
 import { LogoutComponent } from './logout/logout.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'out-folder', pathMatch: 'full' },
+  { path: '', component: DashboardComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'out-folder', component: OutFolderComponent },
   { path: 'iso20022', component: Iso20022ListComponent },

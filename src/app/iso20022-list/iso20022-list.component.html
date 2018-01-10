@@ -8,6 +8,8 @@
         [rows]="iso20022Messages | async"
         [sorts]="[{prop: 'id', dir: 'asc'}]"
         [loadingIndicator]="true"
+        [selectionType]="'single'"
+        (select)="onSelect($event)"
       >
       </ngx-datatable>
     </div>

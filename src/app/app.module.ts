@@ -16,6 +16,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 import * as firebase from 'firebase/app';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 export const firebaseConfig = {
@@ -35,7 +36,8 @@ export const firebaseConfig = {
     OutFolderComponent,
     Iso20022ListComponent,
     FreeFormatListComponent,
-    LogoutComponent
+    LogoutComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
