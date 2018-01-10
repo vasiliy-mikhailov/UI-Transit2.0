@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./iso20022-view.component.css']
 })
 export class Iso20022ViewComponent implements OnInit {
-  private iso20022Message: any;
+  iso20022Message: any;
 
   constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient, private route: ActivatedRoute) {
     if (!this.authService.isAuthenticated()) {
