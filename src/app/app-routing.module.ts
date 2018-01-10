@@ -11,7 +11,8 @@ import { Iso20022ViewComponent } from './iso20022-view/iso20022-view.component';
 import { FreeFormatViewComponent } from './free-format-view/free-format-view.component';
 
 const appRoutes: Routes = [
-  { path: '', component: DashboardComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'out-folder', component: OutFolderComponent },
   { path: 'iso20022', component: Iso20022ListComponent },
