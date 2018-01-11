@@ -1,3 +1,14 @@
-<p>
-  free-format-view works!
-</p>
+<div class="row">
+  <a routerLink="/free-format">Назад</a><br>
+  Id {{ freeFormatMessage?.id }} <br>
+  Отправитель {{ freeFormatMessage?.sender }} <br>
+  Получатель {{ freeFormatMessage?.recipient }} <br>
+  Статус {{ freeFormatMessage?.state }} <br>
+  Направление {{ freeFormatMessage?.direction }} <br>
+  Зарегистрирован {{ freeFormatMessage?.registered }} <br>
+  <br>
+  <button class="btn btn-primary" (click)="downloadHeader()">Скачать заголовок</button>
+  <br>
+  <br>
+  <button class="btn btn-primary" (click)="downloadBinary()">Скачать файл</button>
+</div>

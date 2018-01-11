@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-free-format-list',
@@ -26,7 +24,7 @@ export class FreeFormatListComponent implements OnInit {
     { prop: 'state', name: 'Статус' }
   ];
 
-  constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient) {
+  constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient, private route: ActivatedRoute) {
     if (!this.authService.isAuthenticated()) {
       router.navigate(['login']);
 
@@ -41,6 +39,12 @@ export class FreeFormatListComponent implements OnInit {
           this.freeFormatMessages = freeFormatMessages;
         }
       );
+  }
+
+  onSelect($event) {
+    const id = $event.selected[0].id;
+
+    this.router.navigate([this.route.url, id]);
   }
 
   ngOnInit() {

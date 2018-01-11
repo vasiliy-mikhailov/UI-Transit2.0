@@ -11,6 +11,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class Iso20022ViewComponent implements OnInit {
   iso20022Message: any;
 
+  columns = [
+    { prop: 'id', name: 'id' },
+    { prop: 'direction', name: 'Направление' },
+    { prop: 'registered', name: 'Зарегистрировано' },
+    { prop: 'sender', name: 'Отправитель' },
+    { prop: 'type', name: 'Тип' },
+    { prop: 'state', name: 'Статус' }
+  ];
+
   constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient, private route: ActivatedRoute) {
     if (!this.authService.isAuthenticated()) {
       router.navigate(['login']);
@@ -22,7 +31,7 @@ export class Iso20022ViewComponent implements OnInit {
 
     const id = route.snapshot.params['id'];
 
-    this.httpClient.get<any[]>('https://transit2-0.firebaseio.com/iso_20022_messages.json?auth=' + token + '&orderBy="id"&equalTo="' + id + '"')
+    this.httpClient.get<any[]>('https://transit2-0.firebaseio.com/iso_20022_messages_details.json?auth=' + token + '&orderBy="id"&equalTo="' + id + '"')
       .subscribe(
         (iso20022Messages: any[]) => {
           const key = Object.keys(iso20022Messages)[0];
