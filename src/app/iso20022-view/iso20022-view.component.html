@@ -16,8 +16,6 @@ Id {{ iso20022Message?.id }} <br>
   [rows]="iso20022Message?.linked_documents"
   [sorts]="[{prop: 'id', dir: 'asc'}]"
   [loadingIndicator]="true"
-  [selectionType]="'single'"
-  (select)="onSelect($event)"
 >
 </ngx-datatable>
 
