@@ -37,14 +37,14 @@ export class FreeFormatViewComponent implements OnInit {
 
   downloadHeader() {
     const data = this.freeFormatMessage.header;
-    saveAs(new Blob([data], { type: "text" }), 'header.txt');.
+    saveAs(new Blob([data], { type: 'application/octet-stream' }), 'header.txt');
   }
 
   downloadBinary() {
     const fileName: string = this.freeFormatMessage.attachment;
     const data = this.freeFormatMessage.binary;
 
-    saveAs(new Blob([data], { type: "text" }), fileName);.
+    saveAs(new Blob([data], { type: 'application/octet-stream' }), fileName);
   }
 
   ngOnInit() {
