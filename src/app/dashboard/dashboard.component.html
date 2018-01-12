@@ -1,17 +1,30 @@
 <div class="row">
-  <button type="button" class="btn btn-success" [disabled]="exchange_active" (click)="setExchangeState(true)">Запустить обмен</button>
-  <button type="button" class="btn btn-danger" [disabled]="!exchange_active" (click)="setExchangeState(false)">Остановить обмен</button>
+  <table>
+    <tr>
+      <td colspan="2">
+        <br>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button type="button" class="btn btn-success" [disabled]="exchange_active" (click)="setExchangeState(true)">Запустить обмен</button>
+        <button type="button" class="btn btn-danger" [disabled]="!exchange_active" (click)="setExchangeState(false)">Остановить обмен</button>
+        <br>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td>Ошибок за последние 20 минут</td><td>{{ server_state?.errors_last }}</td>
+    </tr>
+    <tr>
+      <td>Свободное место на диске</td><td>{{ server_state?.hdd_free_space }}</td>
+    </tr>
+    <tr>
+      <td>Задержки исходящих сообщений</td><td>{{ server_state?.out_files_delay }}</td>
+    </tr>
+    <tr>
+      <td>Задержки входящих сообщений</td><td> {{ server_state?.in_files_delay }}</td>
+    </tr>
+  </table>
 </div>
-<div class="row">
-  Ошибок за последние 20 минут {{ server_state?.errors_last }}
-</div>
-<div class="row">
-  Свободное место на диске {{ server_state?.hdd_free_space }}
-</div>
-<div class="row">
-  Исходящих сообщений, отправляющихся дольше 2х минут {{ server_state?.out_files_delay }}
-</div>
-<div class="row">
-  Входящих сообщений, обрабатывающихся дольше 2х минут {{ server_state?.in_files_delay }}
-</div>
-

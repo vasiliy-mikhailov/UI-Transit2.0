@@ -1,14 +1,38 @@
 <div class="row">
   <a routerLink="/free-format">Назад</a><br>
-  Id {{ freeFormatMessage?.id }} <br>
-  Отправитель {{ freeFormatMessage?.sender }} <br>
-  Получатель {{ freeFormatMessage?.recipient }} <br>
-  Статус {{ freeFormatMessage?.state }} <br>
-  Направление {{ freeFormatMessage?.direction }} <br>
-  Зарегистрирован {{ freeFormatMessage?.registered }} <br>
-  <br>
-  <button class="btn btn-primary" (click)="downloadHeader()">Скачать заголовок</button>
-  <br>
-  <br>
-  <button class="btn btn-primary" (click)="downloadBinary()">Скачать файл</button>
+  <table>
+    <tr>
+      <td>Id</td><td>{{ freeFormatMessage?.id }}</td>
+    </tr>
+    <tr>
+      <td>Отправитель</td><td>{{ freeFormatMessage?.sender }}</td>
+    </tr>
+    <tr>
+      <td>Получатель</td><td>{{ freeFormatMessage?.recipient }}</td>
+    </tr>
+    <tr>
+      <td>Статус</td><td>{{ freeFormatMessage?.state }}</td>
+    </tr>
+    <tr>
+      <td>Направление</td><td>{{ freeFormatMessage?.direction }}</td>
+    </tr>
+    <tr>
+      <td>Зарегистрирован</td><td>{{ freeFormatMessage?.registered }}</td>
+    </tr>
+    <tr>
+      <td><br></td><td></td>
+    </tr>
+    <tr>
+      <td>
+        <button class="btn btn-primary" (click)="downloadHeader()">Скачать заголовок</button>
+        <br>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button class="btn btn-primary" (click)="downloadBinary()">Скачать файл</button>
+      </td>
+    </tr>
+  </table>
 </div>
