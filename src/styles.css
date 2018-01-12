@@ -4,11 +4,33 @@
 body, html {
   min-width: 100%;
 }
+
 body {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
+
+.btn-primary {
+  background-color: #ce1126;
+  border-color: #b60f22;
+}
+
+.btn-primary:hover {
+  background-color: #b60f22;
+  border-color: #b60f22;
+}
+
+a.crosslink {
+  font-weight: bold;
+  color: #ce1126;
+}
+
+a.crosslink:hover {
+  font-weight: bold;
+  color: #b60f22;
+}
+
 .container {
   margin-right: 0;
   margin-left: 0;
