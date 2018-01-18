@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class LoginComponent implements OnInit {
 
-  private apiUrl: String;
+  apiUrl: String;
 
   constructor(private authService: AuthService) {
     this.apiUrl = environment.apiUrl;
