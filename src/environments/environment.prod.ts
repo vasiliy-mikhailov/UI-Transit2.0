@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://api.scrumai.com/api/'
+  apiUrl: 'http://api.scrumai.com/api'
 };
