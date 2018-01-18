@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-iso20022-list',
@@ -33,7 +34,9 @@ export class Iso20022ListComponent implements OnInit {
 
     const token = this.authService.getToken();
 
-    this.httpClient.get<any[]>('https://transit2-0.firebaseio.com/iso_20022_messages.json?auth=' + token)
+    const apiUrl = environment.apiUrl;
+
+    this.httpClient.get<any[]>(apiUrl + '/iso_20022_messages.json?auth=' + token)
       .subscribe(
         (iso20022Messages: any[]) => {
           this.iso20022Messages = iso20022Messages;

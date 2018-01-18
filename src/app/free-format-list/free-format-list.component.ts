@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-free-format-list',
@@ -33,7 +34,9 @@ export class FreeFormatListComponent implements OnInit {
 
     const token = this.authService.getToken();
 
-    this.httpClient.get<any[]>('https://transit2-0.firebaseio.com/free_format_messages.json?auth=' + token)
+    const apiUrl = environment.apiUrl;
+
+    this.httpClient.get<any[]>(apiUrl + '/free_format_messages.json?auth=' + token)
       .subscribe(
         (freeFormatMessages: any[]) => {
           this.freeFormatMessages = freeFormatMessages;

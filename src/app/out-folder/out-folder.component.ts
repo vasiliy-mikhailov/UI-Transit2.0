@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-out-folder',
@@ -10,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class OutFolderComponent implements OnInit {
-  outFiles: any[]
+  outFiles: any[];
 
   columns = [
     { prop: 'file_name', name: 'Имя файла' },
@@ -26,7 +27,9 @@ export class OutFolderComponent implements OnInit {
 
     const token = this.authService.getToken();
 
-    this.httpClient.get<any[]>('https://transit2-0.firebaseio.com/out_files.json?auth=' + token)
+    const apiUrl = environment.apiUrl;
+
+    this.httpClient.get<any[]>(apiUrl + '/out_files.json?auth=' + token)
       .subscribe(
         (outFiles: any[]) => {
           this.outFiles = outFiles;

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { saveAs } from 'file-saver';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-free-format-view',
@@ -23,7 +24,9 @@ export class FreeFormatViewComponent implements OnInit {
 
     const id = route.snapshot.params['id'];
 
-    this.httpClient.get<any[]>('https://transit2-0.firebaseio.com/free_format_messages_details.json?auth=' + token + '&orderBy="id"&equalTo="' + id + '"')
+    const apiUrl = environment.apiUrl;
+
+    this.httpClient.get<any[]>(apiUrl + '/free_format_messages.json?auth=' + token + '&filter={ "id" : "' + id + '"}')
       .subscribe(
         (freeFormatMessages: any[]) => {
           console.log(freeFormatMessages);

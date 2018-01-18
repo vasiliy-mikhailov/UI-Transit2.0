@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
   server_state: any;
-  exchange_active: boolean;
 
 
   constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient) {
@@ -22,17 +22,14 @@ export class DashboardComponent implements OnInit {
 
     const token = this.authService.getToken();
 
-    this.httpClient.get<any[]>('https://transit2-0.firebaseio.com/server_state.json?auth=' + token)
+    const apiUrl = environment.apiUrl;
+
+    this.httpClient.get<any[]>(apiUrl + '/server_state.json?auth=' + token)
       .subscribe(
         (server_state: any[]) => {
           this.server_state = server_state;
-        }
-      );
 
-    this.httpClient.get<boolean>('https://transit2-0.firebaseio.com/exchange_active.json?auth=' + token)
-      .subscribe(
-        (exchange_active) => {
-          this.exchange_active = exchange_active;
+          console.log(server_state);
         }
       );
   }
@@ -40,9 +37,14 @@ export class DashboardComponent implements OnInit {
   setExchangeState(exchange_active: boolean) {
     const token = this.authService.getToken();
 
-    this.httpClient.put('https://transit2-0.firebaseio.com/exchange_active.json?auth=' + token, exchange_active).subscribe();
+    const apiUrl = environment.apiUrl;
 
-    this.exchange_active = exchange_active;
+    this.httpClient.put(
+      apiUrl + '/exchange_active.json?auth=' + token, '{ "exchange_active" : ' + exchange_active + '}'
+      , { headers: {'Content-Type':'application/json; charset=utf-8'}})
+      .subscribe();
+
+    this.server_state.exchange_active = exchange_active;
   }
 
 
