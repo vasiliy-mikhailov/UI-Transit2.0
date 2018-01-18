@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +9,10 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
+  private apiUrl: String;
 
+  constructor(private authService: AuthService) {
+    this.apiUrl = environment.apiUrl;
   }
 
   ngOnInit() {

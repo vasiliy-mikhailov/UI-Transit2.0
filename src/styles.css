@@ -21,6 +21,12 @@ body {
   border-color: #b60f22;
 }
 
+/*.btn-light:hover {*/
+  /*background-color: #b60f22;*/
+  /*border-color: #b60f22;*/
+  /*font-color: #ffffff;*/
+/*}*/
+
 a.crosslink {
   font-weight: bold;
   color: #ce1126;
