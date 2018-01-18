@@ -1,37 +1,35 @@
-import * as firebase from 'firebase';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
+import { Md5 } from 'ts-md5/dist/md5';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
   token: string;
+  email: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private httpClient: HttpClient) {
   }
 
   signInWithEmailAndPassword(email: string, password: string) {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(response => {
-        firebase.auth().currentUser.getIdToken()
-          .then(
-            (token: string) => {
-              this.token = token;
-            }
-          );
+    const apiUrl = environment.apiUrl;
 
-        this.router.navigate(['']);
-      })
-      .catch((err) => console.log(err));
+    this.httpClient.get<any>(apiUrl + '/login.json?email=' + email + '&password_md5=' + Md5.hashStr(password))
+      .subscribe(
+        (response: any) => {
+          this.token = response.token;
+          this.email = response.email;
+
+          this.router.navigate(['']);
+        }
+      );
   }
 
   signOut() {
-    firebase.auth().signOut()
-      .then(response => {
-        this.token = null;
-
-        this.router.navigate(['']);
-      })
-      .catch((err) => console.log(err));
+    this.token = null;
+    this.email = null;
+    this.router.navigate(['']);
   }
 
   getToken() {
@@ -52,7 +50,7 @@ export class AuthService {
   }
 
   getUserEMail(): String {
-    return firebase.auth().currentUser.email;
+    return this.email;
   }
 
 }

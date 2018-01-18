@@ -12,16 +12,16 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <div class="addnav">
-          <a class="btn btn-light btn-to-primary" routerLink="" role="button" *ngIf="authService.isAuthenticated()"><b>{{ authService.getUserEMail() }}</b></a>
-          <a class="btn btn-light" routerLink="/login" role="button" *ngIf="!authService.isAuthenticated()">Вход</a>
-          <a class="btn btn-light" routerLink="/logout" role="button" *ngIf="authService.isAuthenticated()">Выход</a>
+        <a class="btn btn-light btn-to-primary" routerLink="" role="button" *ngIf="authService.isAuthenticated()"><b>{{ authService.getUserEMail() }}</b></a>
+        <a class="btn btn-light" routerLink="/login" role="button" *ngIf="!authService.isAuthenticated()">Вход</a>
+        <a class="btn btn-light" routerLink="/logout" role="button" *ngIf="authService.isAuthenticated()">Выход</a>
         </div>
         <ul class="nav navbar-nav">
-          <li routerLinkActive="active"><a routerLink="/dashboard" style = 'cursor: pointer'>Статус</a></li>
-          <li routerLinkActive="active"><a routerLink="/out-folder" style = 'cursor: pointer'>Папка out</a></li>
-          <li routerLinkActive="active"><a routerLink="/iso20022" style = 'cursor: pointer'>ISO 20022</a></li>
-          <li routerLinkActive="active"><a routerLink="/free-format" style = 'cursor: pointer'>Свободный формат</a></li>
-          <li routerLinkActive="active"><a routerLink="/in-folder" style = 'cursor: pointer'>Папка in</a></li>
+          <li routerLinkActive="active" class="nav-item"><a routerLink="/dashboard" style = 'cursor: pointer'>Статус</a></li>
+          <li routerLinkActive="active" class="nav-item"><a routerLink="/out-folder" style = 'cursor: pointer'>Папка out</a></li>
+          <li routerLinkActive="active" class="nav-item"><a routerLink="/iso20022" style = 'cursor: pointer'>ISO 20022</a></li>
+          <li routerLinkActive="active" class="nav-item"><a routerLink="/free-format" style = 'cursor: pointer'>Свободный формат</a></li>
+          <li routerLinkActive="active" class="nav-item"><a routerLink="/in-folder" style = 'cursor: pointer'>Папка in</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
