@@ -26,14 +26,10 @@ export class FreeFormatViewComponent implements OnInit {
 
     const apiUrl = environment.apiUrl;
 
-    this.httpClient.get<any[]>(apiUrl + '/free_format_messages.json?auth=' + token + '&filter={ "id" : "' + id + '"}')
+    this.httpClient.get<any>(apiUrl + '/free_format_messages.json?auth=' + token + '&filter={ "id" : "' + id + '"}')
       .subscribe(
-        (freeFormatMessages: any[]) => {
-          console.log(freeFormatMessages);
-
-          const key = Object.keys(freeFormatMessages)[0];
-
-          this.freeFormatMessage = freeFormatMessages[key];
+        (freeFormatMessages: any) => {
+          this.freeFormatMessage = freeFormatMessages.items[0];
         }
       );
   }

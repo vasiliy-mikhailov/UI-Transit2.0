@@ -4,7 +4,7 @@
       class="bootstrap ngx-datatable"
       [columns]="columns"
       [columnMode]="'force'"
-      [rows]="freeFormatMessages"
+      [rows]="freeFormatMessages.items"
       [sorts]="[{prop: 'id', dir: 'asc'}]"
       [loadingIndicator]="true"
       [selectionType]="'single'"

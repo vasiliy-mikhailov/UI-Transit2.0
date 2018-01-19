@@ -24,10 +24,10 @@ export class DashboardComponent implements OnInit {
 
     const apiUrl = environment.apiUrl;
 
-    this.httpClient.get<any[]>(apiUrl + '/server_state.json?auth=' + token)
+    this.httpClient.get<any>(apiUrl + '/server_state.json?auth=' + token)
       .subscribe(
-        (server_state: any[]) => {
-          this.server_state = server_state;
+        (server_state: any) => {
+          this.server_state = server_state.items[0];
 
           console.log(server_state);
         }

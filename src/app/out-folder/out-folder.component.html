@@ -3,7 +3,7 @@
     <ngx-datatable
       class="bootstrap ngx-datatable"
       [columns]="columns"
-      [rows]="outFiles"
+      [rows]="outFiles.items"
       [sorts]="[{prop: 'file_name', dir: 'asc'}]"
       [loadingIndicator]="true"
     >

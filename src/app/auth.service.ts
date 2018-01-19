@@ -18,8 +18,8 @@ export class AuthService {
     this.httpClient.get<any>(apiUrl + '/login.json?email=' + email + '&password_md5=' + Md5.hashStr(password))
       .subscribe(
         (response: any) => {
-          this.token = response.token;
-          this.email = response.email;
+          this.token = response.items[0].token;
+          this.email = response.items[0].email;
 
           this.router.navigate(['']);
         }
@@ -27,21 +27,19 @@ export class AuthService {
   }
 
   signOut() {
-    this.token = null;
-    this.email = null;
-    this.router.navigate(['']);
+    const apiUrl = environment.apiUrl;
+
+    this.httpClient.get<any>(apiUrl + '/logout.json?auth=' + this.token)
+      .subscribe(
+        (response: any) => {
+          this.token = null;
+          this.email = null;
+          this.router.navigate(['']);
+        }
+      );
   }
 
   getToken() {
-    // firebase.auth().currentUser.getIdToken()
-    //   .then(
-    //     (token: string) => {
-    //       this.token = token;
-    //     }
-    //   );
-
-    this.token = '1234';
-
     return this.token;
   }
 

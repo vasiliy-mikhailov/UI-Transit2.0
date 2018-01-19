@@ -34,12 +34,10 @@ export class Iso20022ViewComponent implements OnInit {
 
     const apiUrl = environment.apiUrl;
 
-    this.httpClient.get<any[]>(apiUrl + '/iso_20022_messages.json?auth=' + token + '&filter={ "id" : "' + id + '"}')
+    this.httpClient.get<any>(apiUrl + '/iso_20022_messages.json?auth=' + token + '&filter={ "id" : "' + id + '"}')
       .subscribe(
-        (iso20022Messages: any[]) => {
-          const key = Object.keys(iso20022Messages)[0];
-
-          this.iso20022Message = iso20022Messages[key];
+        (iso20022Messages: any) => {
+          this.iso20022Message = iso20022Messages.items[0];
         }
       );
   }

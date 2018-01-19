@@ -4,7 +4,7 @@
       class="bootstrap ngx-datatable"
       [columns]="columns"
       [columnMode]="'force'"
-      [rows]="iso20022Messages"
+      [rows]="iso20022Messages.items"
       [sorts]="[{prop: 'id', dir: 'asc'}]"
       [loadingIndicator]="true"
       [selectionType]="'single'"
