@@ -19,7 +19,7 @@ export class FreeFormatListComponent implements OnInit {
     { prop: 'sender', name: 'Отправитель' },
     { prop: 'recipient', name: 'Получатель' },
     { prop: 'registered', name: 'Зарегистрировано' },
-    { prop: 'theme', name: 'Тема' },
+    { prop: 'subject', name: 'Тема' },
     { prop: 'description', name: 'Описание' },
     { prop: 'attachment', name: 'Вложение' },
     { prop: 'state', name: 'Статус' }

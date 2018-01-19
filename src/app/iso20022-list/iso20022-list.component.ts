@@ -20,7 +20,7 @@ export class Iso20022ListComponent implements OnInit {
     { prop: 'recipient', name: 'Получатель' },
     { prop: 'state', name: 'Статус' },
     { prop: 'registered', name: 'Зарегистрировано' },
-    { prop: 'theme', name: 'Тема' },
+    { prop: 'subject', name: 'Тема' },
     { prop: 'description', name: 'Описание' },
     { prop: 'recipient_destination', name: 'ТКД' }
   ];
