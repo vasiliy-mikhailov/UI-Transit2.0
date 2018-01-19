@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 })
 
 export class OutFolderComponent implements OnInit {
-  outFiles: any[];
+  outFiles: any;
 
   columns = [
     { prop: 'file_name', name: 'Имя файла' },
@@ -29,9 +29,9 @@ export class OutFolderComponent implements OnInit {
 
     const apiUrl = environment.apiUrl;
 
-    this.httpClient.get<any[]>(apiUrl + '/out_files.json?auth=' + token)
+    this.httpClient.get<any>(apiUrl + '/out_files.json?auth=' + token)
       .subscribe(
-        (outFiles: any[]) => {
+        (outFiles: any) => {
           this.outFiles = outFiles;
         }
     );

@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./free-format-list.component.css']
 })
 export class FreeFormatListComponent implements OnInit {
-  freeFormatMessages: any[];
+  freeFormatMessages: any;
 
   columns = [
     { prop: 'id', name: 'id' },

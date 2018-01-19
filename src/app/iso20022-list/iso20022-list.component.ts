@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./iso20022-list.component.css']
 })
 export class Iso20022ListComponent implements OnInit {
-  iso20022Messages: any[];
+  iso20022Messages: any;
 
   columns = [
     { prop: 'id', name: 'id' },

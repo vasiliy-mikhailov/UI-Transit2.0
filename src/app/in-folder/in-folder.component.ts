@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./in-folder.component.css']
 })
 export class InFolderComponent implements OnInit {
-  inFiles: any[];
+  inFiles: any;
 
   columns = [
     { prop: 'file_name', name: 'Имя файла' },
